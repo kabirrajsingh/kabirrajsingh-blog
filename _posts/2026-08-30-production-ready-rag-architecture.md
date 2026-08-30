@@ -1,9 +1,15 @@
 ---
 layout: post
 title: "Production-Ready RAG Architecture: Core Patterns Explained"
+redirect_from:
+  - /2026/08/30/production-ready-rag-architecture/
 ---
 
 *Companion post to the video. This is the deeper reference version — the configs, code, and sources the video didn't have time for. If you just want the mental model, watch the video first; come back here when you're actually building.*
+
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/z6Yhdl3Vi7k" title="Production-Ready RAG Architecture: Core Patterns Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 ## Why RAG demos fall apart in production
 

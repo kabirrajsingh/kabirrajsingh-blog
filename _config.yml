@@ -2,8 +2,9 @@ title: Kabir Raj Singh — Blog
 description: Notes on building production AI systems — RAG, agents, and evals.
 url: "https://blog.kabirrajsingh.com"
 markdown: kramdown
-permalink: /:year/:month/:day/:title/
+permalink: /:title/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
