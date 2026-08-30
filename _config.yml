@@ -1,5 +1,5 @@
 title: Kabir Raj Singh — Blog
-description: Mirror of my Medium posts
+description: Notes on building production AI systems — RAG, agents, and evals.
 url: "https://blog.kabirrajsingh.com"
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
