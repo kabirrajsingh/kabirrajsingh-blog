@@ -1,15 +1,16 @@
 ---
 layout: post
 title: "Production-Ready RAG Architecture: Core Patterns Explained"
+description: "Why RAG demos break in production, and the patterns that fix it: chunking strategies, embeddings and vector stores, reranking and hybrid search, and how to actually measure retrieval quality."
 redirect_from:
   - /2026/08/30/production-ready-rag-architecture/
 ---
 
-*Companion post to the video. This is the deeper reference version — the configs, code, and sources the video didn't have time for. If you just want the mental model, watch the video first; come back here when you're actually building.*
-
 <div class="video-embed">
-  <iframe src="https://www.youtube.com/embed/z6Yhdl3Vi7k" title="Production-Ready RAG Architecture: Core Patterns Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/z6Yhdl3Vi7k" title="Production-Ready RAG Architecture: Core Patterns Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
+
+*Companion post to the video above. This is the deeper reference version — the configs, code, and sources the video didn't have time for. If you just want the mental model, watch the video first; come back here when you're actually building.*
 
 ## Why RAG demos fall apart in production
 
@@ -85,7 +86,7 @@ Techniques that move the needle, roughly in order of ROI:
 
 - **Reranking.** Pull a wider candidate set (top 20–50, sometimes top 100) with cheap vector search, then re-score with a cross-encoder or a small LLM before truncating to what actually goes in the prompt. This is consistently one of the highest-ROI additions to a RAG pipeline — see [Pinecone's rerankers writeup](https://www.pinecone.io/learn/series/rag/rerankers/) for the mechanics of why a cross-encoder outperforms bi-encoder similarity alone, or [Cohere's Rerank docs](https://docs.cohere.com/docs/rerank-overview) if you want a reranker you can drop in without training your own.
 
-  ![Two-stage retrieval: a fast bi-encoder narrows a million documents to a hundred candidates, then a slower, more accurate cross-encoder reranks those hundred down to the ten that actually reach the LLM](/assets/images/two-stage-retrieval-funnel.svg)
+  ![Two-stage retrieval: a fast bi-encoder narrows a million documents to a hundred candidates, then a slower, more accurate cross-encoder reranks those hundred down to the ten that actually reach the LLM](/assets/images/two-stage-retrieval-funnel.png)
 
   The reason this is two stages and not one: a cross-encoder scores a query against a document jointly, which is far more accurate than comparing two independently-computed embedding vectors — but it means running the model once per candidate document, which doesn't scale to your full collection. Bi-encoder search is cheap and approximate; it narrows the field. The cross-encoder is expensive and precise; it only has to look at what's left.
 - **Hybrid search.** Combine dense vectors with sparse keyword search so exact-match tokens aren't left to chance.

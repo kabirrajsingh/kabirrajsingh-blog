@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncate: 160 }}">
+  <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | truncate: 160 }}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230a0a0d%22/><rect x=%221.5%22 y=%221.5%22 width=%2229%22 height=%2229%22 rx=%226.5%22 fill=%22none%22 stroke=%22%238a6dff%22 stroke-width=%221.5%22/><text x=%2216%22 y=%2222%22 text-anchor=%22middle%22 font-family=%22Arial,sans-serif%22 font-weight=%22700%22 font-size=%2216%22 fill=%22%238a6dff%22>K</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
