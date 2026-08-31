@@ -1,6 +1,7 @@
 title: Kabir Raj Singh — Blog
 description: Notes on building production AI systems — RAG, agents, and evals.
 url: "https://blog.kabirrajsingh.com"
+timezone: Asia/Kolkata
 markdown: kramdown
 permalink: /:title/
 plugins:
